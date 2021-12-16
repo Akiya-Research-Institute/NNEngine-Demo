@@ -4,7 +4,7 @@ This project demonstrates practical examples, including human detection, human p
 
 ## Details of Demo Project
 
-See [this page.](https://akiya-research-institute.github.io/NNEngine-API/md_html__demo__overview.html)
+See [this page.](https://akiya-research-institute.github.io/NNEngine-API/md_html__demo_project_overview.html)
 
 ## NNEngine Manual
 
