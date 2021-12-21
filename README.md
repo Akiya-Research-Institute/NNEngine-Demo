@@ -12,4 +12,4 @@ See [this page.](https://akiya-research-institute.github.io/NNEngine-API/)
 
 ## Purchase NNEngine
 
-Visit our store page on [UE marketplace](https://akiya-souken.booth.pm/items/3494484) or [BOOTH](https://akiya-souken.booth.pm/items/3494484).
+Visit our store page on [UE marketplace](https://www.unrealengine.com/marketplace/product/74892c770dc149b1b5c4e872804e6ade).
