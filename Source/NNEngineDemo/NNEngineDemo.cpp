@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright 2021 Akiya Research Institute, Inc. All Rights Reserved
 
 #include "NNEngineDemo.h"
 #include "Modules/ModuleManager.h"
