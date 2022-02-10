@@ -14,7 +14,9 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Win64"
+				"Win64",
+				"Android",
+				"Linux"
 			]
 		},
 		{
@@ -22,14 +24,17 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Win64"
+				"Win64",
+				"Android",
+				"Linux"
 			]
 		}
 	],
 	"Plugins": [
 		{
 			"Name": "NNEngine",
-			"Enabled": true
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/74892c770dc149b1b5c4e872804e6ade"
 		},
 		{
 			"Name": "SteamVR",

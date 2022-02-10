@@ -52,7 +52,15 @@ public class WebcamMotionCapture : ModuleRules
 			}
 			);
 
-		RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazePoseDetection_1x128x128xBGRxByte.onnx"));
-		RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "movenet_lightning_v4_1x192x192xBGRxByte.onnx"));
+		if (Target.Platform == UnrealTargetPlatform.Win64 || Target.Platform == UnrealTargetPlatform.Linux)
+		{
+			RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazePoseDetection_1x128x128xBGRxByte_opset12.onnx"));
+			RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "movenet_singlepose_lightning_4_1x192x192x3xBGRxByte_opset12.onnx"));
+		}
+		else if (Target.Platform == UnrealTargetPlatform.Android)
+		{
+            RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazePoseDetection_1x128x128xBGRxByte_opset12.basic.ort"));
+            RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "movenet_singlepose_lightning_4_1x192x192x3xBGRxByte_opset12.basic.ort"));
+        }
 	}
 }

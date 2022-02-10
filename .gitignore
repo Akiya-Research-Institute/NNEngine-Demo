@@ -12,7 +12,7 @@
 *.pch
 
 # Compiled Dynamic libraries
-*.so
+#*.so
 *.dylib
 #*.dll
 
@@ -22,7 +22,7 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
+#*.a
 #*.lib
 
 # Executables
@@ -72,3 +72,11 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# VS Code project files
+.vscode/
+NNEngineDemo.code-workspace
+
+# Simple test map
+Content/simple/simple.uasset
+Content/simple/simplemap.umap

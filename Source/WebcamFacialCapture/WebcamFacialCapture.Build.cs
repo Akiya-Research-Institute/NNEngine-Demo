@@ -53,9 +53,17 @@ public class WebcamFacialCapture : ModuleRules
 			}
 			);
 
-		RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazeFaceDetection_1x256x256xBGRxByte.onnx"));
-		RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazeFaceLandmark_1x192x192xBGRxByte.onnx"));
-		RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazeIris_1x64x64xBGRxByte.onnx"));
-
+		if (Target.Platform == UnrealTargetPlatform.Win64 || Target.Platform == UnrealTargetPlatform.Linux)
+		{
+			RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazeFaceDetection_1x256x256xBGRxByte_opset12.onnx"));
+			RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazeFaceLandmark_1x192x192xBGRxByte_opset12.onnx"));
+			RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazeIris_1x64x64xBGRxByte_opset12.onnx"));
+		}
+		else if (Target.Platform == UnrealTargetPlatform.Android)
+		{
+            RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazeFaceDetection_1x256x256xBGRxByte_opset12.basic.ort"));
+            RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazeFaceLandmark_1x192x192xBGRxByte_opset12.basic.ort"));
+            RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "..", "ThirdParty", "Models", "BlazeIris_1x64x64xBGRxByte_opset12.basic.ort"));
+        }
 	}
 }

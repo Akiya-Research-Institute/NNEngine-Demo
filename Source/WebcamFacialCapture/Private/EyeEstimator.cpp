@@ -3,6 +3,7 @@
 
 #include "EyeEstimator.h"
 
+#undef check // the check macro causes problems with opencv headers
 #include "opencv2/core/core.hpp"
 #include <opencv2/imgproc.hpp>
 
@@ -29,8 +30,8 @@ void UEyeEstimator::init(const FString& onnxFilePath, const EOnnxProvider onnxPr
 void UEyeEstimator::crop(const TArray<uint8>& faceRawImage, const FVector2D& center, TArray<uint8>& eyeRawImage, const int size)
 {
     eyeRawImage.Init(0, 64*64*3);
-    cv::Mat inImage(cv::Size({ 192, 192 }), CV_8UC3, (void*)faceRawImage.GetData());
-    cv::Mat outImage(cv::Size({ 64, 64 }), CV_8UC3, (void*)eyeRawImage.GetData());
+    cv::Mat inImage(cv::Size(192, 192), CV_8UC3, (void*)faceRawImage.GetData());
+    cv::Mat outImage(cv::Size(64, 64), CV_8UC3, (void*)eyeRawImage.GetData());
     const cv::Rect eyeBbox(center.X - size, center.Y - size, size * 2, size * 2);
     const cv::Mat eyeImg = inImage(eyeBbox);
     cv::resize(eyeImg, outImage, cv::Size(64, 64));
