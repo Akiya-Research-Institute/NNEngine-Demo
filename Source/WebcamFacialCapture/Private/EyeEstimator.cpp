@@ -3,7 +3,7 @@
 
 #include "EyeEstimator.h"
 
-#undef check // the check macro causes problems with opencv headers
+//#undef check // the check macro causes problems with opencv headers
 #include "opencv2/core/core.hpp"
 #include <opencv2/imgproc.hpp>
 
