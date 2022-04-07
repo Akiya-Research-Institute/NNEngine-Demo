@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.26",
+	"EngineAssociation": "5.0",
 	"Category": "AI",
 	"Description": "Demonstration: AI-based human pose estimation and facial capture using a single RGB camera",
 	"Modules": [
@@ -13,7 +13,7 @@
 			"Name": "WebcamFacialCapture",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [
+			"PlatformAllowList": [
 				"Win64",
 				"Android",
 				"Linux"
@@ -23,7 +23,7 @@
 			"Name": "WebcamMotionCapture",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [
+			"PlatformAllowList": [
 				"Win64",
 				"Android",
 				"Linux"

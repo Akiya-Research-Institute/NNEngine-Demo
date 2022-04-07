@@ -22,13 +22,19 @@ void UFaceEstimatorAttention::init(const FString& onnxFilePath, const EOnnxProvi
     faceMeshAttention.irisL.Init(FVector2D(), 5);
     faceMeshAttention.irisR.Init(FVector2D(), 5);
     faceMeshAttention.lips.Init(FVector2D(), 80);
+    faceMeshAttention.face_raw.Init(0.0f, 468*3);
+    faceMeshAttention.eyeL_raw.Init(0.0f, 71*2);
+    faceMeshAttention.eyeR_raw.Init(0.0f, 71*2);
+    faceMeshAttention.irisL_raw.Init(0.0f, 5*2);
+    faceMeshAttention.irisR_raw.Init(0.0f, 5*2);
+    faceMeshAttention.lips_raw.Init(0.0f, 80*2);
     onnxModel->bindOutput(onnxModel->outputTensorsInfo[0], &faceMeshAttention.confidence);
-    onnxModel->bindOutput(onnxModel->outputTensorsInfo[1], faceMeshAttention.eyeL.GetData());
-    onnxModel->bindOutput(onnxModel->outputTensorsInfo[2], faceMeshAttention.irisL.GetData());
-    onnxModel->bindOutput(onnxModel->outputTensorsInfo[3], faceMeshAttention.lips.GetData());
-    onnxModel->bindOutput(onnxModel->outputTensorsInfo[4], faceMeshAttention.face.GetData());
-    onnxModel->bindOutput(onnxModel->outputTensorsInfo[5], faceMeshAttention.eyeR.GetData());
-    onnxModel->bindOutput(onnxModel->outputTensorsInfo[6], faceMeshAttention.irisR.GetData());
+    onnxModel->bindOutput(onnxModel->outputTensorsInfo[1], faceMeshAttention.eyeL_raw.GetData());
+    onnxModel->bindOutput(onnxModel->outputTensorsInfo[2], faceMeshAttention.irisL_raw.GetData());
+    onnxModel->bindOutput(onnxModel->outputTensorsInfo[3], faceMeshAttention.lips_raw.GetData());
+    onnxModel->bindOutput(onnxModel->outputTensorsInfo[4], faceMeshAttention.face_raw.GetData());
+    onnxModel->bindOutput(onnxModel->outputTensorsInfo[5], faceMeshAttention.eyeR_raw.GetData());
+    onnxModel->bindOutput(onnxModel->outputTensorsInfo[6], faceMeshAttention.irisR_raw.GetData());
 }
 
 bool UFaceEstimatorAttention::capture(TArray<uint8>& inputRawImage, FFaceMeshAttention& outputMesh)
@@ -36,6 +42,7 @@ bool UFaceEstimatorAttention::capture(TArray<uint8>& inputRawImage, FFaceMeshAtt
     onnxModel->bindInput(onnxModel->inputTensorsInfo[0], inputRawImage.GetData());
     onnxModel->run();
 
+    faceMeshAttention.parseToDoubleVectors();
     outputMesh = faceMeshAttention;
     return faceMeshAttention.confidence > 0.9f;
 }

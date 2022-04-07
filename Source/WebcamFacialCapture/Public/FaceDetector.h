@@ -16,46 +16,42 @@ public:
 	/** Calculate the average face position and orientation from output of the ML model */
 	void calculateCenterOrientationAndSize()
 	{
-		center = (earR + earL + mouth + nose) * 0.25f;
+		const FVector2f center2f = (earR + earL + mouth + nose) * 0.25f;
 
-		orientation = mouth - (eyeL + eyeR) * 0.5f;
-		orientation.Normalize();
+		FVector2f orientation2f = mouth - (eyeL + eyeR) * 0.5f;
+		orientation2f.Normalize();
+		orientation = FVector2D(orientation2f);
 
-		TArray<FVector2D*> keypoints = { &eyeR, &eyeL, &nose, &mouth, &earR, &earL };
+		TArray<FVector2f*> keypoints = { &eyeR, &eyeL, &nose, &mouth, &earR, &earL };
 		float maxDistSquared = 0;
-		for (FVector2D* keypoint : keypoints)
+		for (FVector2f* keypoint : keypoints)
 		{
-			const float distSquared = FVector2D::DistSquared(center, *keypoint);
+			const float distSquared = FVector2f::DistSquared(center2f, *keypoint);
 			if (maxDistSquared < distSquared)
 			{
 				maxDistSquared = distSquared;
 			}
 		}
+		center = FVector2D(center2f);
 		size = FMath::Sqrt(maxDistSquared);
 	}
 
 	/** Buffer for the output of ML model */
-	FVector2D dummy0;
+	FVector2f dummy0;
 	/** Buffer for the output of ML model */
-	FVector2D dummy1;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Facial Capture") 
-		/** Position of the right eye */
-		FVector2D eyeR;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Facial Capture") 
-		/** Position of the left eye */
-		FVector2D eyeL;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Facial Capture") 
-		/** Position of the nose */
-		FVector2D nose;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Facial Capture") 
-		/** Position of the mouth */
-		FVector2D mouth;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Facial Capture") 
-		/** Position of the right ear */
-		FVector2D earR;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Facial Capture") 
-		/** Position of the left ear */
-		FVector2D earL;
+	FVector2f dummy1;
+	/** Position of the right eye */
+	FVector2f eyeR;
+	/** Position of the left eye */
+	FVector2f eyeL;
+	/** Position of the nose */
+	FVector2f nose;
+	/** Position of the mouth */
+	FVector2f mouth;
+	/** Position of the right ear */
+	FVector2f earR;
+	/** Position of the left ear */
+	FVector2f earL;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Facial Capture") 
 		/** Position of the center of the face calculated from output of the ML model */
