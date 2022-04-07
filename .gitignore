@@ -79,3 +79,7 @@ NNEngineDemo.code-workspace
 
 # Simple test map
 Content/simple/*
+
+# Plugin NNEngine
+Plugins/*
+
