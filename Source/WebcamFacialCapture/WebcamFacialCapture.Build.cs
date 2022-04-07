@@ -28,7 +28,7 @@ public class WebcamFacialCapture : ModuleRules
 			new string[]
 			{
 				"Core",
-				"OnnxRuntime",
+				"OnnxRuntimeNNEngine",
 				"CustomizedOpenCV",
 				"TextureProcessing"
 				// ... add other public dependencies that you statically link with here ...

@@ -28,7 +28,7 @@ public class WebcamMotionCapture : ModuleRules
 			new string[]
 			{
 				"Core",
-				"OnnxRuntime",
+				"OnnxRuntimeNNEngine",
 				"TextureProcessing"
 				// ... add other public dependencies that you statically link with here ...
 			}
