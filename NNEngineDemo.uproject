@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.26",
+	"EngineAssociation": "4.27",
 	"Category": "AI",
 	"Description": "Demonstration: AI-based human pose estimation and facial capture using a single RGB camera",
 	"Modules": [
