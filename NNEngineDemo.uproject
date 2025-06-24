@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.4",
+	"EngineAssociation": "5.5",
 	"Category": "AI",
 	"Description": "Demonstration: AI-based human pose estimation and facial capture using a single RGB camera",
 	"Modules": [
@@ -53,6 +53,15 @@
 			"Name": "NNEngine",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/74892c770dc149b1b5c4e872804e6ade"
+		},
+		{
+			"Name": "NNEDenoiser",
+			"Enabled": false,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Linux",
+				"Mac"
+			]
 		}
 	]
 }
